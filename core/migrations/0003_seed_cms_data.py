@@ -188,7 +188,7 @@ def seed_forward(apps, schema_editor):
     SiteSettings.objects.get_or_create(
         pk=1,
         defaults={
-            "header_name": "ФОП Музичко М.В.",
+            "header_name": "ФАНЕРА  ДВП",
             "header_tagline": "Фанера · ДВП · ДСП",
             "header_phone": "+380976962409",
             "hero_title": "Будівельні плити та фанера у Рівному",
