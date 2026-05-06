@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ site_settings.meta_description|default:'ФАНЕРА  ДВП — фанера, ДВП, ДСП у Рівному. Гурт та роздріб. Тел. 097 696 24 09' }}">
+  <title>{% block title %}Фанера, ДВП, ДСП — ФАНЕРА  ДВП | Рівне{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  {% load static %}
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="header-brand">
+        <span class="header-logo-icon" aria-hidden="true">🪵</span>
+        <div class="header-title-group">
+          <span class="header-name">{{ site_settings.header_name }}</span>
+          <span class="header-tagline">{{ site_settings.header_tagline }}</span>
+        </div>
+      </div>
+
+      <nav class="header-nav" id="header-nav" aria-label="Навігація по сайту">
+        <a href="#about" class="nav-link">Про нас</a>
+        <a href="#products" class="nav-link">Продукція</a>
+        <a href="#gallery" class="nav-link">Галерея</a>
+        <a href="#contacts" class="nav-link">Контакти</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:{{ site_settings.header_phone }}" class="header-call-btn" aria-label="Подзвонити нам">
+          <svg class="icon-phone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+          </svg>
+          <span>Подзвонити</span>
+        </a>
+        <button
+          class="header-burger"
+          id="header-burger"
+          aria-controls="header-nav"
+          aria-expanded="false"
+          aria-label="Відкрити меню"
+        >
+          <svg class="burger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-copy">© 1997–{% now "Y" %} {{ site_settings.footer_copyright }}</p>
+      <p class="footer-phones">
+        <a href="tel:{{ site_settings.contact_phone_1 }}">{{ site_settings.contact_phone_1_display }}</a> &nbsp;·&nbsp;
+        <a href="tel:{{ site_settings.contact_phone_2 }}">{{ site_settings.contact_phone_2_display }}</a>
+      </p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal-dialog" aria-modal="true">
+    <div class="modal-inner">
+      <button class="modal-close" id="modal-close" aria-label="Закрити вікно">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div id="modal-body" aria-live="polite"></div>
+    </div>
+  </dialog>
+
+  <script src="https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js" defer></script>
+  <script src="{% static 'js/main.js' %}" defer></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
