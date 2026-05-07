@@ -2,6 +2,7 @@
 from pathlib import Path
 
 import os
+from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -10,6 +11,9 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 ALLOWED_HOSTS: list[str] = []
 
 INSTALLED_APPS = [
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -92,4 +96,72 @@ CLOUDINARY_STORAGE = {
     "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME", ""),
     "API_KEY": os.environ.get("CLOUDINARY_API_KEY", ""),
     "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET", ""),
+}
+
+# ── Unfold Admin ──────────────────────────────────────────────────────────────
+
+UNFOLD = {
+    "SITE_TITLE": "Фанери",
+    "SITE_HEADER": "Фанери — Адміністрування",
+    "SITE_SYMBOL": "inventory_2",
+    "SHOW_HISTORY": False,
+    "SHOW_VIEW_ON_SITE": False,
+    "COLORS": {
+        "primary": {
+            "50": "240 249 255",
+            "100": "224 242 254",
+            "200": "186 230 253",
+            "300": "125 211 252",
+            "400": "56 189 248",
+            "500": "14 165 233",
+            "600": "2 132 199",
+            "700": "3 105 161",
+            "800": "7 89 133",
+            "900": "12 74 110",
+            "950": "8 47 73",
+        },
+    },
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": False,
+        "navigation": [
+            {
+                "title": "CMS",
+                "separator": False,
+                "items": [
+                    {
+                        "title": "Налаштування сайту",
+                        "icon": "settings",
+                        "link": reverse_lazy("admin:core_sitesettings_changelist"),
+                    },
+                    {
+                        "title": "Продукти",
+                        "icon": "category",
+                        "link": reverse_lazy("admin:core_product_changelist"),
+                    },
+                    {
+                        "title": "Галерея",
+                        "icon": "photo_library",
+                        "link": reverse_lazy("admin:core_galleryimage_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "Заявки",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Дзвінки",
+                        "icon": "phone_callback",
+                        "link": reverse_lazy("admin:core_callbackrequest_changelist"),
+                    },
+                    {
+                        "title": "Повідомлення",
+                        "icon": "mail",
+                        "link": reverse_lazy("admin:core_contactmessage_changelist"),
+                    },
+                ],
+            },
+        ],
+    },
 }

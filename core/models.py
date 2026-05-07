@@ -17,7 +17,7 @@ class SiteSettings(models.Model):
     """Singleton — зберігає весь редагований контент сайту (крім продуктів і галереї)."""
 
     # Header
-    header_name = models.CharField("Назва компанії", max_length=100, default="ФАНЕРА  ДВП")
+    header_name = models.CharField("Назва компанії", max_length=100, default="Фанери")
     header_tagline = models.CharField("Підзаголовок хедера", max_length=100, default="Фанера · ДВП · ДСП")
     header_phone = models.CharField(
         "Телефон хедера (для посилання tel:)", max_length=30, default="+380976962409",
@@ -61,7 +61,7 @@ class SiteSettings(models.Model):
     # Footer
     footer_copyright = models.CharField(
         "Текст копірайту (без року)", max_length=200,
-        default="ФАНЕРА  ДВП · Рівне",
+        default="Фанери · Рівне",
     )
 
     # Meta

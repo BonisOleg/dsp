@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from unfold.admin import ModelAdmin, TabularInline
 
 from .models import (
     CallbackRequest,
@@ -10,31 +11,25 @@ from .models import (
     SiteSettings,
 )
 
-admin.site.site_header = "Фанері — Адміністрування"
-admin.site.site_title = "Фанері"
-admin.site.index_title = "Панель керування"
 
+# ── Actions ───────────────────────────────────────────────────────────────────
 
-# ── Helpers ──────────────────────────────────────────────────────────────────
-
+@admin.action(description="Позначити як оброблені")
 def mark_processed(modeladmin, request, queryset):
     queryset.update(is_processed=True)
 
 
-mark_processed.short_description = "Позначити як оброблені"
-
-
+@admin.action(description="Зняти позначку «оброблено»")
 def mark_unprocessed(modeladmin, request, queryset):
     queryset.update(is_processed=False)
 
 
-mark_unprocessed.short_description = "Зняти позначку «оброблено»"
-
-
-# ── CMS: SiteSettings ────────────────────────────────────────────────────────
+# ── CMS: SiteSettings (Singleton) ────────────────────────────────────────────
 
 @admin.register(SiteSettings)
-class SiteSettingsAdmin(admin.ModelAdmin):
+class SiteSettingsAdmin(ModelAdmin):
+    compressed_fields = True
+
     fieldsets = (
         ("Хедер", {
             "fields": ("header_name", "header_tagline", "header_phone"),
@@ -79,9 +74,9 @@ class SiteSettingsAdmin(admin.ModelAdmin):
         return self.change_view(request, str(obj.pk), extra_context=extra_context)
 
 
-# ── CMS: Products ────────────────────────────────────────────────────────────
+# ── CMS: Products ─────────────────────────────────────────────────────────────
 
-class ProductSpecInline(admin.TabularInline):
+class ProductSpecInline(TabularInline):
     model = ProductSpec
     extra = 1
     fields = ("label", "value", "order")
@@ -89,7 +84,8 @@ class ProductSpecInline(admin.TabularInline):
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ModelAdmin):
+    compressed_fields = True
     list_display = ("code", "name", "badge_colour", "image_preview_thumb", "order", "is_visible")
     list_editable = ("order", "is_visible")
     list_filter = ("is_visible", "badge_colour")
@@ -135,10 +131,11 @@ class ProductAdmin(admin.ModelAdmin):
         return format_html('<span style="color:#aaa">Фото не завантажено</span>')
 
 
-# ── CMS: Gallery ─────────────────────────────────────────────────────────────
+# ── CMS: Gallery ──────────────────────────────────────────────────────────────
 
 @admin.register(GalleryImage)
-class GalleryImageAdmin(admin.ModelAdmin):
+class GalleryImageAdmin(ModelAdmin):
+    compressed_fields = True
     list_display = ("caption", "badge_label", "badge_colour", "image_preview_thumb", "order", "is_visible")
     list_editable = ("order", "is_visible")
     list_filter = ("is_visible", "badge_colour")
@@ -187,10 +184,10 @@ class GalleryImageAdmin(admin.ModelAdmin):
         return format_html('<span style="color:#aaa">Фото не завантажено</span>')
 
 
-# ── Leads ─────────────────────────────────────────────────────────────────────
+# ── Leads ──────────────────────────────────────────────────────────────────────
 
 @admin.register(CallbackRequest)
-class CallbackRequestAdmin(admin.ModelAdmin):
+class CallbackRequestAdmin(ModelAdmin):
     list_display = ("name", "phone", "short_message", "created_at", "is_processed")
     list_filter = ("is_processed",)
     search_fields = ("name", "phone", "message")
@@ -208,7 +205,7 @@ class CallbackRequestAdmin(admin.ModelAdmin):
 
 
 @admin.register(ContactMessage)
-class ContactMessageAdmin(admin.ModelAdmin):
+class ContactMessageAdmin(ModelAdmin):
     list_display = ("name", "email", "short_message", "created_at", "is_processed")
     list_filter = ("is_processed",)
     search_fields = ("name", "email", "message")
