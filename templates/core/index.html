@@ -52,19 +52,19 @@
 <!-- ══ ПРО НАС ═══════════════════════════════════════════════════════════ -->
 <section class="about section" id="about">
   <div class="container">
-    <h2 class="section-title">Про нас</h2>
+    <h2 class="section-title">{{ site_settings.section_about_title }}</h2>
     <div class="about-grid">
       <div class="about-stat">
         <span class="stat-num">{{ site_settings.about_year }}</span>
-        <span class="stat-label">рік заснування</span>
+        <span class="stat-label">{{ site_settings.stat_year_label }}</span>
       </div>
       <div class="about-stat">
         <span class="stat-num">{{ site_settings.about_experience }}</span>
-        <span class="stat-label">років досвіду</span>
+        <span class="stat-label">{{ site_settings.stat_experience_label }}</span>
       </div>
       <div class="about-stat">
         <span class="stat-num">{{ site_settings.about_product_count }}</span>
-        <span class="stat-label">види продукції</span>
+        <span class="stat-label">{{ site_settings.stat_products_label }}</span>
       </div>
     </div>
     {% if site_settings.about_text_1 %}
@@ -95,7 +95,7 @@
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
-        Зв'язатись з нами
+        {{ site_settings.cta_btn_label }}
       </button>
     </div>
   </div>
@@ -104,7 +104,7 @@
 <!-- ══ ПРОДУКЦІЯ ═════════════════════════════════════════════════════════ -->
 <section class="products section" id="products">
   <div class="container">
-    <h2 class="section-title">Продукція</h2>
+    <h2 class="section-title">{{ site_settings.section_products_title }}</h2>
     <div class="products-grid">
 
       {% for product in products %}
@@ -146,7 +146,7 @@
 <!-- ══ ГАЛЕРЕЯ ════════════════════════════════════════════════════════════ -->
 <section class="gallery section" id="gallery">
   <div class="container">
-    <h2 class="section-title">Галерея</h2>
+    <h2 class="section-title">{{ site_settings.section_gallery_title }}</h2>
     <div class="gallery-grid">
 
       {% for item in gallery_items %}
@@ -212,7 +212,7 @@
   <div class="container">
     <div class="contacts-grid">
       <div class="contact-info">
-        <h2 class="section-title">Контакти</h2>
+        <h2 class="section-title">{{ site_settings.section_contacts_title }}</h2>
         <div class="contact-item">
           <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>

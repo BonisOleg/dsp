@@ -57,9 +57,22 @@ class SiteSettingsAdmin(ModelAdmin):
         ("Футер", {
             "fields": ("footer_copyright",),
         }),
+        ("Заголовки секцій", {
+            "fields": (
+                "section_about_title",
+                "section_products_title",
+                "section_gallery_title",
+                "section_contacts_title",
+            ),
+        }),
+        ("Статистика — мітки", {
+            "fields": ("stat_year_label", "stat_experience_label", "stat_products_label"),
+        }),
+        ("Кнопки та CTA", {
+            "fields": ("cta_btn_label",),
+        }),
         ("SEO", {
-            "fields": ("meta_description",),
-            "classes": ("collapse",),
+            "fields": ("page_title", "meta_description"),
         }),
     )
 

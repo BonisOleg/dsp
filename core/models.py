@@ -64,6 +64,26 @@ class SiteSettings(models.Model):
         default="Фанери · Рівне",
     )
 
+    # Page title
+    page_title = models.CharField(
+        "Заголовок сторінки (тег <title>)", max_length=200,
+        default="Фанера, ДВП, ДСП — Фанери | Рівне",
+    )
+
+    # Section titles
+    section_about_title = models.CharField("Заголовок секції «Про нас»", max_length=100, default="Про нас")
+    section_products_title = models.CharField("Заголовок секції «Продукція»", max_length=100, default="Продукція")
+    section_gallery_title = models.CharField("Заголовок секції «Галерея»", max_length=100, default="Галерея")
+    section_contacts_title = models.CharField("Заголовок секції «Контакти»", max_length=100, default="Контакти")
+
+    # Stat labels
+    stat_year_label = models.CharField("Мітка під роком заснування", max_length=50, default="рік заснування")
+    stat_experience_label = models.CharField("Мітка під досвідом", max_length=50, default="років досвіду")
+    stat_products_label = models.CharField("Мітка під кількістю продукції", max_length=50, default="видів продукції")
+
+    # CTA button
+    cta_btn_label = models.CharField("Кнопка CTA-банеру", max_length=100, default="Зв'язатись з нами")
+
     # Meta
     meta_description = models.CharField("Meta description", max_length=300, default="")
 
