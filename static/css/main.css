@@ -1134,6 +1134,9 @@ button {
   }
 
   .hero {
+    background:
+      linear-gradient(160deg, rgba(11,51,32,.72) 0%, rgba(21,92,58,.52) 55%, rgba(30,138,82,.42) 100%),
+      url('../img/hero-bg.jpg') center / cover no-repeat;
     padding-block: 5rem 4rem;
   }
 
