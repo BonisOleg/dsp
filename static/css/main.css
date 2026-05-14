@@ -910,16 +910,17 @@ button {
   color: rgba(255, 255, 255, .8);
   padding-block: 2rem 3rem;
   text-align: center;
+  position: relative;
 }
 
 .footer-dev {
-  display: block;
-  margin-top: 1.25rem;
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
   font-size: 0.625rem;
   color: rgba(255, 255, 255, .18);
   text-decoration: none;
   letter-spacing: 0.03em;
-  text-align: right;
   transition: color 0.2s;
 }
 
