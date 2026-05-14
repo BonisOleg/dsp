@@ -912,6 +912,21 @@ button {
   text-align: center;
 }
 
+.footer-dev {
+  display: block;
+  margin-top: 1.25rem;
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, .18);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-align: right;
+  transition: color 0.2s;
+}
+
+.footer-dev:hover {
+  color: rgba(255, 255, 255, .42);
+}
+
 .footer-copy {
   font-size: 0.875rem;
   margin-bottom: 0.375rem;
