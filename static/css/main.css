@@ -352,7 +352,9 @@ button {
    Hero
 ═══════════════════════════════════════════════════════════════ */
 .hero {
-  background: linear-gradient(160deg, var(--clr-forest) 0%, var(--clr-forest-mid) 60%, var(--clr-forest-light) 100%);
+  background:
+    linear-gradient(160deg, rgba(11,51,32,.75) 0%, rgba(21,92,58,.58) 55%, rgba(30,138,82,.45) 100%),
+    url('../img/hero-bg-mobile.jpg') center / cover no-repeat;
   color: var(--clr-white);
   padding-block: 3.5rem 2.5rem;
 }
